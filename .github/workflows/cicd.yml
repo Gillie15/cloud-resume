@@ -1,0 +1,17 @@
+name: Upload website to S3
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@master
+      - uses: Gillie15/cloud-resume@master
+        env:
+          AWS_S3_BUCKET: ${{ secrets.AWS_S3_BUCKET }}
+          AWS_REGION: 'eu-west-2'
+          SOURCE_DIR: 'public' 

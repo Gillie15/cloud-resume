@@ -10,16 +10,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@master
-
-      - uses: aws-actions/configure-aws-credentials@master
-        with:
+      - uses: jakejarvis/s3-sync-action@v0.5.1
+        env:
           AWS_S3_BUCKET: ${{ secrets.AWS_S3_BUCKET }}
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }} 
           aws-region: 'eu-west-2'
           SOURCE_DIR: 'public' 
 
-      - name: Sync code to S3 bucket
-        run: 
-          aws s3 sync ./Users/Joe Gillespie/Downloads/cv-website s3://gilliesresumewebsite123/
-        working-directory: ./     

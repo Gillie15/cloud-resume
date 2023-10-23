@@ -17,3 +17,7 @@ jobs:
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }} 
           AWS_REGION: 'eu-west-2'
           SOURCE_DIR: 'public' 
+
+      - name: Sync code to S3 bucket
+        run:
+          aws s3 sync ./"C:\Users\Joe Gillespie\Downloads\cv-website" s3://arn:aws:s3:::gilliesresumewebsite123   
